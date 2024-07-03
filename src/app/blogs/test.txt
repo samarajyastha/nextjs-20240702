@@ -1,0 +1,10 @@
+blogs/programming
+blogs/programming/frontend
+blogs/fashion
+blogs/fashion/men
+blogs/fashion/women
+blogs/tech
+blogs/tech/smartphones
+blogs/tech/laptops
+blogs/tech/laptops/mac
+blogs/tech/laptops/windows
