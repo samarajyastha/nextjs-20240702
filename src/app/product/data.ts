@@ -1,0 +1,60 @@
+const products = [
+  {
+    id: "665dd5015eecb1926b9def82",
+    name: "Wireless Headphones",
+    price: 199.99,
+    category: "Electronics",
+    brand: "Sony",
+    createdAt: "Jul 04, 2024",
+  },
+  {
+    id: "665dd5015eecb1926b9def84",
+    name: "Mechanical Keyboard",
+    price: 149,
+    category: "Electronics",
+    brand: "Razer",
+    createdAt: "Jul 04, 2024",
+  },
+  {
+    id: "665dd5015eecb1926b9def87",
+    name: "iPhone 9",
+    price: 549,
+    category: "smartphones",
+    brand: "Apple",
+    createdAt: "Jul 04, 2024",
+  },
+  {
+    id: "665dd5015eecb1926b9def89",
+    name: "Samsung Universe 9",
+    price: 1249,
+    category: "smartphones",
+    brand: "Samsung",
+    createdAt: "Jul 04, 2024",
+  },
+  {
+    id: "665dd5015eecb1926b9def8d",
+    name: "Samsung Galaxy Book",
+    price: 1499,
+    category: "laptops",
+    brand: "Samsung",
+    createdAt: "Jul 04, 2024",
+  },
+  {
+    id: "665dd5015eecb1926b9def8e",
+    name: "Microsoft Surface Laptop 4",
+    price: 1499,
+    category: "laptops",
+    brand: "Microsoft Surface",
+    createdAt: "Jul 04, 2024",
+  },
+  {
+    id: "665dd5015eecb1926b9def8f",
+    name: "Infinix INBOOK",
+    price: 1099,
+    category: "laptops",
+    brand: "Infinix",
+    createdAt: "Jul 04, 2024",
+  },
+];
+
+export default products;
