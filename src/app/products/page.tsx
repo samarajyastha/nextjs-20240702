@@ -1,9 +1,19 @@
 import ProductsTable from "./_components/Table";
 
-export default function ProductPage() {
+async function getAllProducts() {
+  const products = await fetch("http://localhost:3000/products/api").then(
+    (data) => data.json()
+  );
+
+  return products;
+}
+
+export default async function ProductPage() {
+  const products = await getAllProducts();
+
   return (
     <div className="container">
-      <ProductsTable />
+      <ProductsTable products={products} />
     </div>
   );
 }

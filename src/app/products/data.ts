@@ -55,6 +55,14 @@ const products = [
     brand: "Infinix",
     createdAt: "Jul 04, 2024",
   },
+  {
+    id: "665dd5015eecb1926b9def9a",
+    name: "Vostro 15",
+    price: 1599,
+    category: "laptops",
+    brand: "Dell",
+    createdAt: "Jul 04, 2024",
+  },
 ];
 
 export default products;

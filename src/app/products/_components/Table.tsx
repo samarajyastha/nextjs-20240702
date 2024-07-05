@@ -1,8 +1,19 @@
 import React from "react";
-import products from "../data";
 import Link from "next/link";
 
-const ProductsTable = () => {
+type Product = {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  price: number;
+};
+
+type ProductsTableType = {
+  products: Product[];
+};
+
+const ProductsTable = ({ products }: ProductsTableType) => {
   return (
     <table className="w-10/12 mx-auto mt-5 border rounded-2xl">
       <thead>
@@ -18,7 +29,7 @@ const ProductsTable = () => {
         {products.map((product) => (
           <tr key={product.id}>
             <td className="text-center px-3 py-1 hover:text-blue-500">
-              <Link href={`/product/${product.id}`}>{product.id}</Link>
+              <Link href={`/products/${product.id}`}>{product.id}</Link>
             </td>
             <td className="text-center px-3 py-1">{product.name}</td>
             <td className="text-center px-3 py-1">{product.category}</td>

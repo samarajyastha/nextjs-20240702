@@ -1,8 +1,15 @@
 import React from "react";
-import products from "../data";
 
-const ProductCard = ({ id }: { id: string }) => {
-  const product = products.find((product) => product.id === id);
+type Product = {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  price: number;
+};
+
+const ProductCard = ({ product }: { product: Product }) => {
+  if (!product?.name) throw new Error("Product not found!");
 
   return (
     <div className="px-8 py-5 rounded-2xl shadow bg-slate-100 max-w-fit">
