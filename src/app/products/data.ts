@@ -1,6 +1,6 @@
 const products = [
   {
-    id: "665dd5015eecb1926b9def82",
+    id: 1,
     name: "Wireless Headphones",
     price: 199.99,
     category: "Electronics",
@@ -8,7 +8,7 @@ const products = [
     createdAt: "Jul 04, 2024",
   },
   {
-    id: "665dd5015eecb1926b9def84",
+    id: 2,
     name: "Mechanical Keyboard",
     price: 149,
     category: "Electronics",
@@ -16,7 +16,7 @@ const products = [
     createdAt: "Jul 04, 2024",
   },
   {
-    id: "665dd5015eecb1926b9def87",
+    id: 3,
     name: "iPhone 9",
     price: 549,
     category: "smartphones",
@@ -24,7 +24,7 @@ const products = [
     createdAt: "Jul 04, 2024",
   },
   {
-    id: "665dd5015eecb1926b9def89",
+    id: 4,
     name: "Samsung Universe 9",
     price: 1249,
     category: "smartphones",
@@ -32,7 +32,7 @@ const products = [
     createdAt: "Jul 04, 2024",
   },
   {
-    id: "665dd5015eecb1926b9def8d",
+    id: 5,
     name: "Samsung Galaxy Book",
     price: 1499,
     category: "laptops",
@@ -40,7 +40,7 @@ const products = [
     createdAt: "Jul 04, 2024",
   },
   {
-    id: "665dd5015eecb1926b9def8e",
+    id: 6,
     name: "Microsoft Surface Laptop 4",
     price: 1499,
     category: "laptops",
@@ -48,19 +48,19 @@ const products = [
     createdAt: "Jul 04, 2024",
   },
   {
-    id: "665dd5015eecb1926b9def8f",
-    name: "Infinix INBOOK",
-    price: 1099,
-    category: "laptops",
-    brand: "Infinix",
-    createdAt: "Jul 04, 2024",
-  },
-  {
-    id: "665dd5015eecb1926b9def9a",
+    id: 7,
     name: "Vostro 15",
     price: 1599,
     category: "laptops",
     brand: "Dell",
+    createdAt: "Jul 04, 2024",
+  },
+  {
+    id: 8,
+    name: "Infinix INBOOK",
+    price: 1099,
+    category: "laptops",
+    brand: "Infinix",
     createdAt: "Jul 04, 2024",
   },
 ];
