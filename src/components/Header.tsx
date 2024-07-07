@@ -8,11 +8,11 @@ import React from "react";
 const Header = () => {
   const pathname = usePathname();
 
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   return (
     <header className="w-full text-gray-700  shadow-sm body-font">
-      <div className="container flex flex-col items-start p-6 mx-auto md:flex-row">
+      <div className="container flex flex-col items-start py-6 mx-auto md:flex-row">
         <div className="flex items-center mb-4 font-medium text-gray-900 title-font md:mb-0">
           LOGO
         </div>
