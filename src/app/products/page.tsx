@@ -1,19 +1,14 @@
+import { getAllProducts } from "@/api/product";
 import ProductsTable from "./_components/Table";
-
-async function getAllProducts() {
-  const products = await fetch("http://localhost:3000/products/api").then(
-    (data) => data.json()
-  );
-
-  return products;
-}
+import ProductsGrid from "./_components/Grid";
 
 export default async function ProductPage() {
   const products = await getAllProducts();
 
   return (
-    <div className="container">
-      <ProductsTable products={products} />
+    <div className="container mx-auto">
+      {/* <ProductsTable products={products} /> */}
+      <ProductsGrid products={products} />
     </div>
   );
 }

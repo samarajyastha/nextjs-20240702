@@ -8,7 +8,7 @@ import React from "react";
 const Header = () => {
   const pathname = usePathname();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   return (
     <header className="w-full text-gray-700  shadow-sm body-font">

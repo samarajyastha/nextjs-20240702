@@ -11,7 +11,7 @@ export default function ProductLayout({
 }) {
   return (
     <>
-      <div>Product page</div>
+      <div className="text-center text-5xl my-8">Product page</div>
       {children}
     </>
   );
