@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import LoginForm from "./_components/Form";
 
 export default function Login() {
   return (
@@ -8,56 +9,7 @@ export default function Login() {
         Login
       </h1>
       <div className="flex justify-center">
-        <form className="w-1/2 mt-10">
-          <div className="mb-6">
-            <input
-              type="email"
-              placeholder="Email address"
-              className="
-                  w-full
-                  rounded
-                  py-3
-                  px-[14px]
-                  text-body-color text-base
-                  border border-[f0f0f0]
-                  outline-none
-                  focus-visible:shadow-none
-                  focus:border-primary
-                  "
-            />
-          </div>
-          <div className="mb-6">
-            <input
-              type="password"
-              placeholder="Password"
-              className="
-                  w-full
-                  rounded
-                  py-3
-                  px-[14px]
-                  text-body-color text-base
-                  border border-[f0f0f0]
-                  outline-none
-                  focus-visible:shadow-none
-                  focus:border-primary
-                  "
-            />
-          </div>
-          <button
-            type="submit"
-            className="
-                  w-full
-                  text-white
-                  bg-slate-700
-                  rounded
-                  p-3
-                  transition
-                  hover:bg-opacity-90
-                  "
-          >
-            Login
-          </button>
-        </form>
+        <LoginForm />
       </div>
       <div className="mt-5 text-center">
         Does not have an account?
