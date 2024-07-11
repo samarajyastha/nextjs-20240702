@@ -20,7 +20,9 @@ export default async function ProductById(props: ProductByIdType) {
   //   notFound();
   // }
 
-  const product = await getProductById(props.params.productId);
+  const response = await getProductById(props.params.productId);
+
+  const product = response.data;
 
   return (
     <div className="container mx-auto mt-8">
