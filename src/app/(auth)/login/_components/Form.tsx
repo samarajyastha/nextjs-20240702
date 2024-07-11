@@ -1,41 +1,34 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { AxiosError } from "axios";
 import { LoginFormInput } from "@/types/auth";
-import { login } from "@/api/auth";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
+import { loginUser } from "@/redux/auth/authActions";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const LoginForm = () => {
-  const [error, setError] = useState<string>();
-
   const { register, handleSubmit, formState } = useForm<LoginFormInput>();
   const { errors } = formState;
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const router = useRouter();
 
+  const { loading, error, isAuthenticated } = useSelector(
+    (state: RootState) => state.auth
+  );
+
   async function onSubmit(data: LoginFormInput) {
-    try {
-      const response = await login(data);
-
-      localStorage.setItem("authToken", response.data.token);
-
-      router.push("/");
-    } catch (error) {
-      const resError = error as unknown as AxiosError;
-
-      setError(resError.response?.data as string);
-    }
+    dispatch(loginUser(data));
   }
 
   useEffect(() => {
-    const authToken = localStorage.getItem("authToken");
-
-    const isAuthenticated = authToken ? true : false;
-
-    if (isAuthenticated) router.push("/");
-  }, [router]);
+    if (isAuthenticated) {
+      router.push("/");
+    }
+  }, [isAuthenticated, router]);
 
   return (
     <form className="w-1/2 mt-10" onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +64,7 @@ const LoginForm = () => {
         type="submit"
         className="w-full text-white bg-slate-700 rounded p-3 transition hover:bg-opacity-90"
       >
-        Login
+        {loading ? "Submitting..." : "Login"}
       </button>
       {error ? <p className="text-red-500 mt-2 text-center">{error}</p> : null}
     </form>

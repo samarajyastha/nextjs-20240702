@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import type { Metadata } from "next";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main>{children}</main>
+        <Providers>
+          <Header />
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );

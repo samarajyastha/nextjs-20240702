@@ -1,17 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import navLinks from "@/constants/navlinks";
 import { usePathname, useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 const Header = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const authToken = localStorage.getItem("authToken");
-
-  const isAuthenticated = authToken ? true : false;
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   function logout() {
     localStorage.removeItem("authToken");
@@ -46,7 +46,14 @@ const Header = () => {
               );
           })}
 
-          {isAuthenticated ? <button className="bg-slate-700 text-white px-3 py-1 rounded" onClick={logout}>Logout</button> : null}
+          {isAuthenticated ? (
+            <button
+              className="bg-slate-700 text-white px-3 py-1 rounded"
+              onClick={logout}
+            >
+              Logout
+            </button>
+          ) : null}
         </nav>
       </div>
     </header>
