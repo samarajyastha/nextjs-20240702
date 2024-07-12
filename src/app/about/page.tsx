@@ -7,7 +7,7 @@ export const metadata = {
 export default function About() {
   return (
     <AuthLayout>
-      <div>About page</div>;
+      <div>About page</div>
     </AuthLayout>
   );
 }

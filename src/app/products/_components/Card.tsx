@@ -1,39 +1,25 @@
 "use client";
 
 import { Product } from "@/types/product";
-import React from "react";
 import headphone from "@/assets/images/headphone.jpg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaTrash } from "react-icons/fa";
-import { deleteProduct } from "@/api/product";
-import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/redux/store";
+import { remove } from "@/redux/products/productActions";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const router = useRouter();
+
+  const dispatch = useDispatch<AppDispatch>();
 
   function onClick(id?: string) {
     router.push(`/products/${id}`);
   }
 
-  async function onDeleteProduct(id?: string) {
-    try {
-      await deleteProduct(id);
-
-      toast("Product deleted successfully.", {
-        autoClose: 1500,
-        type: "success",
-      });
-
-      router.refresh();
-    } catch (error) {
-      toast(error?.response?.data, {
-        autoClose: 1500,
-        type: "error",
-      });
-
-      console.log(error);
-    }
+  async function onDeleteProduct(id: string) {
+    dispatch(remove(id));
   }
 
   if (!product?.name) throw new Error("Product not found!");
@@ -56,7 +42,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </button>
         <button
           className="bg-red-500 p-2 rounded text-white"
-          onClick={() => onDeleteProduct(product.id)}
+          onClick={() => onDeleteProduct(product.id ?? "")}
         >
           <FaTrash />
         </button>

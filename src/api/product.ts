@@ -26,9 +26,7 @@ const addProduct = async (data: Product) => {
   return products;
 };
 
-const deleteProduct = async (
-  id?: string
-): Promise<AxiosResponse | AxiosError> => {
+const deleteProduct = async (id: string) => {
   const token = localStorage.getItem("authToken");
 
   const product = await axios.delete(`${config.apiUrl}/api/products/${id}`, {

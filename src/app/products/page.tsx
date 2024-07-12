@@ -1,6 +1,5 @@
 import ProductsGrid from "./_components/Grid";
 import Link from "next/link";
-import { ToastContainer } from "react-toastify";
 import AuthLayout from "../../layouts/AuthLayout";
 
 export default async function ProductPage() {
@@ -16,7 +15,6 @@ export default async function ProductPage() {
           </Link>
         </div>
         <ProductsGrid />
-        <ToastContainer />
       </div>
     </AuthLayout>
   );
