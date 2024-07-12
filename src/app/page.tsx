@@ -1,3 +1,10 @@
+import Hero from "@/components/Hero";
+import AuthLayout from "../layouts/AuthLayout";
+
 export default function Home() {
-  return <h1 className="text-center pt-5">Home Page</h1>;
+  return (
+    <AuthLayout>
+      <Hero />
+    </AuthLayout>
+  );
 }

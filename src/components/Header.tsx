@@ -1,22 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect } from "react";
 import navLinks from "@/constants/navlinks";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { AppDispatch, RootState } from "@/redux/store";
+import { useDispatch } from "react-redux";
+import { logout } from "@/redux/auth/authSlice";
 
 const Header = () => {
   const pathname = usePathname();
-  const router = useRouter();
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
-  function logout() {
-    localStorage.removeItem("authToken");
-
-    router.push("/login");
+  function logoutUser() {
+    dispatch(logout());
   }
 
   return (
@@ -49,7 +49,7 @@ const Header = () => {
           {isAuthenticated ? (
             <button
               className="bg-slate-700 text-white px-3 py-1 rounded"
-              onClick={logout}
+              onClick={logoutUser}
             >
               Logout
             </button>

@@ -1,7 +1,13 @@
+import AuthLayout from "../../layouts/AuthLayout";
+
 export const metadata = {
   title: "About Us",
 };
 
 export default function About() {
-  return <div>About page</div>;
+  return (
+    <AuthLayout>
+      <div>About page</div>;
+    </AuthLayout>
+  );
 }

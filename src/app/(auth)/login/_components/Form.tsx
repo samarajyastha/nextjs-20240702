@@ -5,8 +5,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/redux/store";
 import { loginUser } from "@/redux/auth/authActions";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 
 const LoginForm = () => {
   const { register, handleSubmit, formState } = useForm<LoginFormInput>();
@@ -14,21 +12,11 @@ const LoginForm = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const router = useRouter();
-
-  const { loading, error, isAuthenticated } = useSelector(
-    (state: RootState) => state.auth
-  );
+  const { loading, error } = useSelector((state: RootState) => state.auth);
 
   async function onSubmit(data: LoginFormInput) {
     dispatch(loginUser(data));
   }
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      router.push("/");
-    }
-  }, [isAuthenticated, router]);
 
   return (
     <form className="w-1/2 mt-10" onSubmit={handleSubmit(onSubmit)}>
