@@ -1,4 +1,5 @@
-import { deleteProduct, getAllProducts } from "@/api/product";
+import { addProduct, deleteProduct, getAllProducts } from "@/api/product";
+import { Product } from "@/types/product";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 
@@ -32,4 +33,19 @@ const remove = createAsyncThunk(
   }
 );
 
-export { getAll, remove };
+const add = createAsyncThunk(
+  "products/add",
+  async (data: Product, { rejectWithValue }) => {
+    try {
+      const response = await addProduct(data);
+
+      return response.data;
+    } catch (error) {
+      const axiosError = error as AxiosError;
+
+      return rejectWithValue(axiosError.response?.data);
+    }
+  }
+);
+
+export { getAll, remove, add };

@@ -1,36 +1,45 @@
 "use client";
 
-import { addProduct } from "@/api/product";
+import { add } from "@/redux/products/productActions";
+import { resetAddSuccess } from "@/redux/products/productSlice";
+import { RootState } from "@/redux/rootReducer";
+import { AppDispatch } from "@/redux/store";
 import { Product } from "@/types/product";
-import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 const AddProductForm = () => {
-  const router = useRouter();
-
-  const { register, handleSubmit, formState } = useForm<Product>();
+  const { register, handleSubmit, formState, reset } = useForm<Product>();
 
   const { errors } = formState;
 
-  async function onSubmit(data: Product) {
-    try {
-      await addProduct(data);
+  const dispatch = useDispatch<AppDispatch>();
 
-      toast("Product added successfully.", {
-        autoClose: 1500,
-        type: "success",
-      });
-    } catch (error) {
-      toast(error.response.data, {
-        autoClose: 1500,
-        type: "error",
-      });
+  const { loading, error, addSuccess } = useSelector(
+    (state: RootState) => state.product
+  );
 
-      console.log(error);
-    }
+  function onSubmit(data: Product) {
+    dispatch(add(data));
   }
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error, { autoClose: 1500 });
+    }
+
+    if (addSuccess) {
+      toast.success("Product added successfully.", {
+        autoClose: 1500,
+        onClose: () => dispatch(resetAddSuccess()),
+      });
+
+      reset();
+    }
+  }, [dispatch, addSuccess, error, reset]);
 
   return (
     <form
@@ -120,7 +129,7 @@ const AddProductForm = () => {
           type="submit"
           className="block w-full rounded-md bg-cyan-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Add Product
+          {loading ? "Adding..." : "Add Product"}
         </button>
       </div>
     </form>

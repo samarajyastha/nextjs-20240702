@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAll, remove } from "./productActions";
+import { add, getAll, remove } from "./productActions";
 import { Product } from "@/types/product";
 
 type ProductState = {
@@ -7,6 +7,7 @@ type ProductState = {
   error: string | null;
   products: Product[];
   deleteSuccess: boolean;
+  addSuccess: boolean;
 };
 
 const initialState: ProductState = {
@@ -14,6 +15,7 @@ const initialState: ProductState = {
   error: null,
   products: [],
   deleteSuccess: false,
+  addSuccess: false,
 };
 
 const productSlice = createSlice({
@@ -22,6 +24,9 @@ const productSlice = createSlice({
   reducers: {
     resetDeleteSuccess: (state) => {
       state.deleteSuccess = false;
+    },
+    resetAddSuccess: (state) => {
+      state.addSuccess = false;
     },
   },
   extraReducers: (builder) => {
@@ -49,10 +54,22 @@ const productSlice = createSlice({
       .addCase(remove.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+      })
+      .addCase(add.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(add.fulfilled, (state, action) => {
+        state.loading = false;
+        state.addSuccess = true;
+      })
+      .addCase(add.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
       });
   },
 });
 
-export const { resetDeleteSuccess } = productSlice.actions;
+export const { resetDeleteSuccess, resetAddSuccess } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAll } from "@/redux/products/productActions";
 import { AppDispatch } from "@/redux/store";
 import ProductsLoading from "../loading";
-import { RootState } from "@/redux/rootReducer";
 import { toast, ToastContainer } from "react-toastify";
 import { resetDeleteSuccess } from "@/redux/products/productSlice";
+import { RootState } from "@/redux/rootReducer";
 
 const ProductsGrid = () => {
   const dispatch = useDispatch<AppDispatch>();
