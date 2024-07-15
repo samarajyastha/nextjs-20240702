@@ -8,8 +8,11 @@ import { FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { remove } from "@/redux/products/productActions";
+import Modal from "@/components/Modal";
+import { useState } from "react";
 
 const ProductCard = ({ product }: { product: Product }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
   const dispatch = useDispatch<AppDispatch>();
@@ -18,8 +21,12 @@ const ProductCard = ({ product }: { product: Product }) => {
     router.push(`/products/${id}`);
   }
 
-  async function onDeleteProduct(id: string) {
-    dispatch(remove(id));
+  function onDeleteProduct() {
+    setIsOpen(true);
+  }
+
+  function onConfirmDelete() {
+    dispatch(remove(product.id ?? ""));
   }
 
   if (!product?.name) throw new Error("Product not found!");
@@ -42,10 +49,32 @@ const ProductCard = ({ product }: { product: Product }) => {
         </button>
         <button
           className="bg-red-500 p-2 rounded text-white"
-          onClick={() => onDeleteProduct(product.id ?? "")}
+          onClick={onDeleteProduct}
         >
           <FaTrash />
         </button>
+        <Modal
+          title="Are you sure?"
+          content={`Are you sure you want to delete ${product.name}?`}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          actions={
+            <>
+              <button
+                className="rounded py-1 px-3 bg-slate-700 text-white"
+                onClick={() => setIsOpen(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="rounded py-1 px-3 bg-red-500 text-white"
+                onClick={onConfirmDelete}
+              >
+                Delete
+              </button>
+            </>
+          }
+        />
       </div>
     </div>
   );
