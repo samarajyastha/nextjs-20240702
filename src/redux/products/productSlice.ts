@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { add, getAll, remove } from "./productActions";
-import { Product } from "@/types/product";
+import { Product, ProductsQuery } from "@/types/product";
 
 type ProductState = {
   loading: boolean;
@@ -8,6 +8,7 @@ type ProductState = {
   products: Product[];
   deleteSuccess: boolean;
   addSuccess: boolean;
+  query: ProductsQuery;
 };
 
 const initialState: ProductState = {
@@ -16,6 +17,7 @@ const initialState: ProductState = {
   products: [],
   deleteSuccess: false,
   addSuccess: false,
+  query: {},
 };
 
 const productSlice = createSlice({
@@ -27,6 +29,9 @@ const productSlice = createSlice({
     },
     resetAddSuccess: (state) => {
       state.addSuccess = false;
+    },
+    setLimit: (state, action) => {
+      state.query = { ...state.query, limit: action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -70,6 +75,7 @@ const productSlice = createSlice({
   },
 });
 
-export const { resetDeleteSuccess, resetAddSuccess } = productSlice.actions;
+export const { resetDeleteSuccess, resetAddSuccess, setLimit } =
+  productSlice.actions;
 
 export default productSlice.reducer;

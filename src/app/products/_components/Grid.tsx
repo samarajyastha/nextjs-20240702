@@ -12,13 +12,13 @@ import { RootState } from "@/redux/rootReducer";
 const ProductsGrid = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { loading, products, error, deleteSuccess } = useSelector(
+  const { loading, products, error, deleteSuccess, query } = useSelector(
     (state: RootState) => state.product
   );
 
   useEffect(() => {
-    dispatch(getAll());
-  }, [dispatch, deleteSuccess]);
+    dispatch(getAll(query));
+  }, [dispatch, deleteSuccess, query]);
 
   useEffect(() => {
     if (error) {

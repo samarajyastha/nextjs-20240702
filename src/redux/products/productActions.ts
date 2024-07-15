@@ -1,13 +1,13 @@
 import { addProduct, deleteProduct, getAllProducts } from "@/api/product";
-import { Product } from "@/types/product";
+import { Product, ProductsQuery } from "@/types/product";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AxiosError } from "axios";
 
 const getAll = createAsyncThunk(
   "products/all",
-  async (_, { rejectWithValue }) => {
+  async (query: ProductsQuery, { rejectWithValue }) => {
     try {
-      const response = await getAllProducts();
+      const response = await getAllProducts(query);
 
       return response.data;
     } catch (error) {

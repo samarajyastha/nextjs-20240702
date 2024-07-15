@@ -1,6 +1,7 @@
 import ProductsGrid from "./_components/Grid";
 import Link from "next/link";
 import AuthLayout from "../../layouts/AuthLayout";
+import ProductsFilter from "./_components/Filter";
 
 export default async function ProductPage() {
   return (
@@ -14,6 +15,7 @@ export default async function ProductPage() {
             Add Product +
           </Link>
         </div>
+        <ProductsFilter />
         <ProductsGrid />
       </div>
     </AuthLayout>
