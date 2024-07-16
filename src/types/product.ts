@@ -8,4 +8,8 @@ export type Product = {
 
 export type ProductsQuery = {
   limit?: string;
+  sort?: string;
+  filters?: {
+    [key: string]: string;
+  };
 };

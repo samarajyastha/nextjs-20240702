@@ -2,11 +2,16 @@ import config from "@/config";
 import { Product, ProductsQuery } from "@/types/product";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-const getAllProducts = async (query: ProductsQuery) => {
-  console.log(query)
-  const products = await axios.get(
-    `${config.apiUrl}/api/products?limit=${query.limit ?? 10}`
-  );
+const getAllProducts = async ({
+  limit = "10",
+  sort = JSON.stringify({ createdAt: -1 }),
+  filters = {},
+}: ProductsQuery) => {
+  const query = `limit=${limit}&sort=${sort}&filters=${JSON.stringify(
+    filters
+  )}`;
+
+  const products = await axios.get(`${config.apiUrl}/api/products?${query}`);
 
   return products;
 };

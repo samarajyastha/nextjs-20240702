@@ -33,6 +33,12 @@ const productSlice = createSlice({
     setLimit: (state, action) => {
       state.query = { ...state.query, limit: action.payload };
     },
+    setSort: (state, action) => {
+      state.query = { ...state.query, sort: action.payload };
+    },
+    setFilters: (state, action) => {
+      state.query = { ...state.query, filters: action.payload };
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -75,7 +81,12 @@ const productSlice = createSlice({
   },
 });
 
-export const { resetDeleteSuccess, resetAddSuccess, setLimit } =
-  productSlice.actions;
+export const {
+  resetDeleteSuccess,
+  resetAddSuccess,
+  setLimit,
+  setSort,
+  setFilters,
+} = productSlice.actions;
 
 export default productSlice.reducer;
