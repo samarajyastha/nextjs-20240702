@@ -10,6 +10,7 @@ import { AppDispatch } from "@/redux/store";
 import { remove } from "@/redux/products/productActions";
 import Modal from "@/components/Modal";
 import { useState } from "react";
+import { Tooltip } from "react-tooltip";
 
 const ProductCard = ({ product }: { product: Product }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,13 @@ const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="py-5 h-full border border-dashed border-gray-800">
       <div className="flex justify-center mb-5">
-        <Image src={headphone} alt="" height={200} className="" />
+        <Image
+          src={headphone}
+          alt=""
+          height={200}
+          className=""
+          title={product.name}
+        />
       </div>
       <p className="text-center font-semibold text-lg">$ {product?.price}</p>
       <p className="text-center font-semibold text-xl">{product?.name}</p>
