@@ -7,7 +7,10 @@ import { RootState } from "@/redux/rootReducer";
 export default function AddProduct() {
   return (
     <div className="container mx-auto">
-      <AddProductForm />
+      <h2 className="text-3xl text-center my-10">Add Product</h2>
+      <div className="pb-32">
+        <AddProductForm />
+      </div>
       <ToastContainer />
     </div>
   );

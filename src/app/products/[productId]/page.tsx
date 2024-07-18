@@ -26,7 +26,7 @@ export default async function ProductById(props: ProductByIdType) {
 
   return (
     <div className="container mx-auto mt-8">
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center pt-20 pb-32">
         <div className="w-1/2 flex justify-center p-5">
           <Image src={headphone} alt="" className="w-2/3 h-auto border p-5" />
         </div>

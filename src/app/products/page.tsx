@@ -7,7 +7,7 @@ export default async function ProductPage() {
   return (
     <AuthLayout>
       <div className="container mx-auto">
-        <div className="flex justify-end my-3">
+        <div className="flex justify-end py-5">
           <Link
             href={"/products/add"}
             className="bg-slate-700 text-white rounded px-3 py-1"
@@ -15,8 +15,10 @@ export default async function ProductPage() {
             Add Product +
           </Link>
         </div>
-        <ProductsFilter />
-        <ProductsGrid />
+        <div className="pb-32">
+          <ProductsFilter />
+          <ProductsGrid />
+        </div>
       </div>
     </AuthLayout>
   );
